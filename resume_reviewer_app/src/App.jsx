@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,10 +6,10 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-fetch("http://localhost:5000/api/health")
+useEffect(() => {fetch("http://localhost:5000/api/request")
   .then(res => res.json())
   .then(data => console.log(data));
-
+}, []);
   return (
   
 
@@ -22,7 +22,7 @@ fetch("http://localhost:5000/api/health")
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1 class="text-3xl font-bold underline">Vite + React</h1>
+      <h1 className="text-3xl font-bold underline">Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
