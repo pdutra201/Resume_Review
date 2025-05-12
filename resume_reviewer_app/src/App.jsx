@@ -4,12 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState("CLick below to generate a story")
 
-useEffect(() => {fetch("http://localhost:5000/api/request")
+const handleOnClick = () => {fetch("http://localhost:5000/api/request")
   .then(res => res.json())
-  .then(data => console.log(data));
-}, []);
+  .then(data => setData(data.output));
+};
+
+
   return (
   
 
@@ -22,10 +24,10 @@ useEffect(() => {fetch("http://localhost:5000/api/request")
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1 className="text-3xl font-bold underline">Vite + React</h1>
+      <h1 className="text-3xl font-bold underline">{data}</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={handleOnClick}>
+          New Story
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
