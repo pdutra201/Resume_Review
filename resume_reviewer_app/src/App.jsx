@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [data, setData] = useState("CLick below to generate a story")
+  const [data, setData] = useState("Click below to generate a story")
 
 const handleOnClick = () => {fetch("http://localhost:5000/api/request")
   .then(res => res.json())
@@ -17,25 +17,18 @@ const handleOnClick = () => {fetch("http://localhost:5000/api/request")
 
     <>
       <div >
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <input if="file" type="file"/>
+        <button className='submit'>Upload</button>
+        
       </div>
       <h1 className="text-3xl font-bold underline">{data}</h1>
       <div className="card">
         <button onClick={handleOnClick}>
           New Story
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+       
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    
     </>
   )
 }
